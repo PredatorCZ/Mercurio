@@ -630,6 +630,10 @@ void LoadMeshData(BinReaderRef rd, GLTFModel &main, GLTFContext &gctx) {
 }
 
 void CreateSkin(GLTFModel &main, GLTFContext &gctx, const SM3 &scene) {
+  if (gctx.joints.empty()) {
+    return;
+  }
+
   auto &skin = main.skins.emplace_back();
   skin.joints.resize(gctx.joints.size());
 
